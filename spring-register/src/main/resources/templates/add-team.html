@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout/header :: header">
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">Adicionar novo Time</h2>
+        <div class="col-md-6">
+            <form action="#" th:action="@{/index/team/add}" th:object="${team}" method="post">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input type="text" th:field="*{name}" class="form-control" id="name"
+                               placeholder="Digite o nome do Time">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-secondary" value="Adicionar">
+                        <p class="my-5"><a class="list-group-item" href="/index/team"><i class="material-icons">&#xe5c4;</i> Voltar</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+</body>
+</html>

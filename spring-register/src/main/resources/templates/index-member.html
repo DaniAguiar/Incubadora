@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/header :: header">
+</head>
+<body>
+<div th:switch="${members}" class="container my-5">
+        <div class="col-md-center">
+            <div th:case="*">
+                <h2 class="my-5">Membros</h2>
+                <table class="table table-striped table-responsive-md">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nome do Time</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${members.empty}"><td colspan="4" align="center">Nenhum Membro encontrado!</td></tr>
+                    <tr th:each="member : ${members}">
+                        <td th:text="${member.name}"></td>
+                        <td th:text="${member.team.name}"></td>
+                        <td><a th:href="@{/index/member/edit/{id}(id=${member.id})}" class="btn btn-secondary"><i
+                                class="fas fa-user-edit"></i></a></td>
+                        <td><a th:href="@{/index/member/delete/{id}(id=${member.id})}" class="btn btn-danger"><i
+                                class='far fa-trash-alt'></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="my-5"><a href="/index/member/signup" class="btn btn-secondary"><i
+                    class="material-icons">&#xe7fe;</i> Adicionar</a></p>
+            <p class="my-5"><a class="list-group-item" href="/index"><i class="fa fa-home fa-fw" ></i>&nbsp; Início</a></p>
+        </div>
+</div>
+</body>
+</html>

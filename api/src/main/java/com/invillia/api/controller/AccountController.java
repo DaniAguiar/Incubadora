@@ -57,20 +57,20 @@ public class AccountController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/{id}/withdraws")
+    @PostMapping("/withdraws/{id}")
     public HttpEntity<?> doWithdraw(@PathVariable Long id,
                                     @Valid @RequestBody WithdrawRequest req){
 
-        accountService.getIdAccountRequestToWithdraw(id, req.getValue());
+        accountService.getIdAccountRequestToWithdraw(id, req.getAmount());
 
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/{id}/deposits")
+    @PostMapping("/deposits/{id}")
     public HttpEntity<?> doDeposit(@PathVariable Long id,
                                    @Valid @RequestBody WithdrawRequest req){
 
-        accountService.getIdAccountRequestToDeposit(id, req.getValue());
+        accountService.getIdAccountRequestToDeposit(id, req.getAmount());
 
         return ResponseEntity.noContent().build();
     }

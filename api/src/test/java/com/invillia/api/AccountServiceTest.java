@@ -48,7 +48,7 @@ class AccountServiceTest {
     void successfulDepositTest(){
         accountService.deposit(account, 100.00);
 
-        Assertions.assertEquals(1000.00, account.getBalance());
+        Assertions.assertEquals(1100.00, account.getBalance());
 
         ArgumentCaptor<Account> captor = ArgumentCaptor.forClass(Account.class);
         Mockito.verify(accountRepository, Mockito.times(1)).save(captor.capture());

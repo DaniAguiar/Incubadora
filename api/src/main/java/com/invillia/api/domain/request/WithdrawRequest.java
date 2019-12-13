@@ -5,13 +5,13 @@ import javax.validation.constraints.NotNull;
 public class WithdrawRequest {
 
     @NotNull
-    private Double value;
+    private Double amount;
 
-    public Double getValue() {
-        return value;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 }

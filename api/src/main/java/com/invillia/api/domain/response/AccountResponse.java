@@ -15,5 +15,5 @@ public class AccountResponse {
     private Double maxLimit;
     private String createdAt;
     private String updatedAt;
-    private PersonResponse idPerson;
+    private PersonResponse person;
 }

@@ -1,8 +1,8 @@
-package com.invillia.api.integration;
+package com.invillia.api.integration.accountIntegration;
 
 import com.invillia.api.Response;
 import com.invillia.api.domain.Account;
-import com.invillia.api.factory.AccountFactory;
+import com.invillia.api.factory.account.AccountFactory;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,8 @@ public class FindAccountByIdTest {
                     .body("accountLimit", Matchers.is(account.getAccountLimit().floatValue()))
                     .body("maxLimit", Matchers.is(account.getMaxLimit().floatValue()))
                     .body("createdAt", Matchers.is(account.getCreatedAt().format(FORMATTER)))
-                    .body("updatedAt", Matchers.is(account.getUpdatedAt().format(FORMATTER)));
+                    .body("updatedAt", Matchers.is(account.getUpdatedAt().format(FORMATTER)))
+                    .body("person", Matchers.is(account.getPerson()));
     }
 
     @Test
@@ -53,6 +54,6 @@ public class FindAccountByIdTest {
                     .get("/accounts/1")
                 .then()
                     .log().all()
-                    .specification(Response.notFound());
+                    .specification(Response.notFound("Not Found!"));
     }
 }

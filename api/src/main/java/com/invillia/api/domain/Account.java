@@ -45,4 +45,7 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
+
+    public Account(double v, double v1, double v2) {
+    }
 }

@@ -1,7 +1,7 @@
-package com.invillia.api.integration;
+package com.invillia.api.integration.accountIntegration;
 
 import com.invillia.api.Response;
-import com.invillia.api.factory.AccountFactory;
+import com.invillia.api.factory.account.AccountFactory;
 import com.invillia.api.repository.AccountRepository;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
@@ -47,6 +47,6 @@ public class DeleteAccountTest {
                     .delete("/accounts/1")
                 .then()
                     .log().all()
-                    .specification(Response.notFound());
+                    .specification(Response.notFound(" não encontrado!"));
     }
 }

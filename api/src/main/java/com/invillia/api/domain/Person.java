@@ -22,10 +22,6 @@ public class Person {
     @Column(nullable = false)
     private String name;
 
-    @NonNull
-    @Column(nullable = false, unique = true)
-    private String cpf;
-
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createdAt;

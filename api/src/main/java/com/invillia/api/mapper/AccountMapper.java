@@ -32,7 +32,7 @@ public class AccountMapper {
         accountResponse.setMaxLimit(account.getMaxLimit());
         accountResponse.setCreatedAt(account.getCreatedAt().format(formatter));
         accountResponse.setUpdatedAt(account.getUpdatedAt().format(formatter));
-        accountResponse.setIdPerson(personMapper.personToPersonResponse(account.getPerson()));
+        accountResponse.setPerson(personMapper.personToPersonResponse(account.getPerson()));
 
         return accountResponse;
     }

@@ -8,7 +8,7 @@ import org.hamcrest.Matchers;
 
 public class Response {
 
-    public static ResponseSpecification notFound() {
+    public static ResponseSpecification notFound(String s) {
         return new ResponseSpecBuilder()
                 .expectStatusCode(SC_NOT_FOUND)
                 .expectBody("timestamp", Matchers.not(Matchers.empty()))

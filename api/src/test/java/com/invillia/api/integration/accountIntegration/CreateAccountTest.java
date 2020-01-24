@@ -1,9 +1,9 @@
-package com.invillia.api.integration;
+package com.invillia.api.integration.accountIntegration;
 
 import com.invillia.api.domain.Account;
 import com.invillia.api.domain.request.AccountRequest;
 import com.invillia.api.exception.ResourceNotFoundException;
-import com.invillia.api.factory.AccountRequestFactory;
+import com.invillia.api.factory.account.AccountRequestFactory;
 import com.invillia.api.repository.AccountRepository;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -50,7 +50,9 @@ public class CreateAccountTest {
         Assertions.assertAll("Account Assert",
                 () -> Assertions.assertEquals(accountRequest.getBalance(), account.getBalance()),
                 () -> Assertions.assertEquals(accountRequest.getAccountLimit(), account.getAccountLimit()),
-                () -> Assertions.assertEquals(accountRequest.getMaxLimit(), account.getMaxLimit()));
+                () -> Assertions.assertEquals(accountRequest.getMaxLimit(), account.getMaxLimit()),
+                () -> Assertions.assertEquals(accountRequest.getIdPerson(), account.getPerson())
+        );
     }
 
     @Test
@@ -67,6 +69,7 @@ public class CreateAccountTest {
                     .statusCode(400)
                     .body("balance", Matchers.isEmptyOrNullString())
                     .body("accountLimit", Matchers.isEmptyOrNullString())
-                    .body("maxLimit", Matchers.isEmptyOrNullString());
+                    .body("maxLimit", Matchers.isEmptyOrNullString())
+                    .body("idPerson", Matchers.isEmptyOrNullString());
     }
 }

@@ -7,7 +7,6 @@ public class PersonResponse {
 
     private Long id;
     private String name;
-    private String cpf;
     private String createdAt;
     private String updatedAt;
 }

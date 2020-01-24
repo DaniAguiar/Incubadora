@@ -1,4 +1,4 @@
-package com.invillia.api.factory;
+package com.invillia.api.factory.account;
 
 import br.com.leonardoferreira.jbacon.JBacon;
 import com.github.javafaker.Faker;

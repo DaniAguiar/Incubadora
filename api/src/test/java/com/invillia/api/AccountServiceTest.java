@@ -4,6 +4,7 @@ package com.invillia.api;
 import com.invillia.api.domain.Account;
 import com.invillia.api.mapper.AccountMapper;
 import com.invillia.api.repository.AccountRepository;
+import com.invillia.api.repository.PersonRepository;
 import com.invillia.api.service.AccountService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,12 +18,13 @@ class AccountServiceTest {
     private AccountService accountService;
     private AccountRepository accountRepository;
     private AccountMapper accountMapper;
+    private PersonRepository personRepository;
 
     @BeforeEach
     void setUp(){
         accountRepository = Mockito.mock(AccountRepository.class);
         account = new Account( 1000.00, 500.00,500.00);
-        accountService = new AccountService(accountRepository, accountMapper);
+        accountService = new AccountService(accountRepository, accountMapper, personRepository);
     }
 
     @Test

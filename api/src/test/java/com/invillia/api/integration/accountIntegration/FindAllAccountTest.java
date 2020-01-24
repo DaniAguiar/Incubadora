@@ -1,6 +1,6 @@
-package com.invillia.api.integration;
+package com.invillia.api.integration.accountIntegration;
 
-import com.invillia.api.factory.AccountFactory;
+import com.invillia.api.factory.account.AccountFactory;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;

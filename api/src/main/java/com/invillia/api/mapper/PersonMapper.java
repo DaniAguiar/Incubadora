@@ -26,7 +26,6 @@ public class PersonMapper {
 
         personResponse.setId(person.getId());
         personResponse.setName(person.getName());
-        personResponse.setCpf(person.getCpf());
         personResponse.setCreatedAt(person.getCreatedAt().format(formatter));
         personResponse.setUpdatedAt(person.getUpdatedAt().format(formatter));
 
@@ -43,13 +42,11 @@ public class PersonMapper {
         final Person person = new Person();
 
         person.setName(personRequest.getName());
-        person.setCpf(personRequest.getCpf());
 
         return person;
     }
 
     public void updatePersonToPersonRequest(final Person person, final PersonRequest personRequest){
         person.setName(personRequest.getName());
-        person.setCpf(personRequest.getCpf());
     }
 }

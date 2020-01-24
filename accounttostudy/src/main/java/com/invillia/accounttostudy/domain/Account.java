@@ -1,12 +1,14 @@
-package com.invillia.api.domain;
+package com.invillia.accounttostudy.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-
 
 @Entity
 @Data
@@ -19,17 +21,22 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @NotNull
     @Column(nullable = false)
     private Double balance;
 
-    @NonNull
+    @NotNull
     @Column(nullable = false)
-    private Double accountLimit;
+    private Double accLimit;
 
-    @NonNull
+    @NotNull
     @Column(nullable = false)
     private Double maxLimit;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    private Person person;
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -38,9 +45,4 @@ public class Account {
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updatedAt;
-
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
 }

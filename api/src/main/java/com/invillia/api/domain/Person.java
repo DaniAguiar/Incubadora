@@ -1,19 +1,17 @@
 package com.invillia.api.domain;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
-
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Account {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,26 +19,18 @@ public class Account {
 
     @NonNull
     @Column(nullable = false)
-    private Double balance;
+    private String name;
 
     @NonNull
-    @Column(nullable = false)
-    private Double accountLimit;
+    @Column(nullable = false, unique = true)
+    private String cpf;
 
-    @NonNull
-    @Column(nullable = false)
-    private Double maxLimit;
-
-    @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Account> accounts;
 }

@@ -1,39 +1,18 @@
 package com.invillia.api.domain.request;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
+@Data
 public class AccountRequest {
 
-    @NotNull
+    @NotNull(message = "Balance can't be null")
     private Double balance;
 
-    @NotNull
+    @NotNull(message = "Limit can't be null")
     private Double accountLimit;
 
-    @NotNull
+    @NotNull(message = "Max Limit can't be null")
     private Double maxLimit;
-
-    public Double getMaxLimit() {
-        return maxLimit;
-    }
-
-    public void setMaxLimit(Double maxLimit) {
-        this.maxLimit = maxLimit;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public Double getAccountLimit() {
-        return accountLimit;
-    }
-
-    public void setAccountLimit(Double accountLimit) {
-        this.accountLimit = accountLimit;
-    }
 }

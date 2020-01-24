@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 
 import axios from '../../utils/httpClient'
 import Field from '../../components/Field'
@@ -99,8 +99,10 @@ class OpitionsAccount extends Component{
                 />
                 
                 <div className="button-center">
-                    <button className="btn btn-info" type="submit" value="w" onClick={this.handleAmount}>Withdraw</button>&nbsp;
-                    <button className="btn btn-info" type="submit" value="d"  onClick={this.handleAmount}>Deposit</button>
+                    <button className="btn btn-info" type="submit" value="w" 
+                        onClick={this.handleAmount}>Withdraw</button>&nbsp;
+                    <button className="btn btn-info" type="submit" value="d"  
+                        onClick={this.handleAmount}>Deposit</button>
                 </div>
                 
             </form>

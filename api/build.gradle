@@ -20,6 +20,7 @@ dependencies {
 
 	runtimeOnly "org.postgresql:postgresql"
 
+	compileOnly 'org.projectlombok:lombok'
 	testImplementation "com.h2database:h2"
 	testImplementation "br.com.leonardoferreira:JBacon:2.0.1"
 	testImplementation "com.github.javafaker:javafaker:1.0.1"

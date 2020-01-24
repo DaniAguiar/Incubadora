@@ -6,6 +6,7 @@ import com.invillia.api.domain.response.AccountResponse;
 import com.invillia.api.exception.ResourceNotFoundException;
 import com.invillia.api.mapper.AccountMapper;
 import com.invillia.api.repository.AccountRepository;
+import com.invillia.api.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,17 @@ import java.util.List;
 public class AccountService {
 
     private final AccountRepository accountRepository;
-
     private final AccountMapper accountMapper;
+    private final PersonRepository personRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public AccountService(AccountRepository accountRepository,
+                          AccountMapper accountMapper,
+                          PersonRepository personRepository) {
+
         this.accountRepository = accountRepository;
         this.accountMapper = accountMapper;
+        this.personRepository = personRepository;
     }
 
     @Transactional(readOnly = true)

@@ -15,4 +15,7 @@ public class AccountRequest {
 
     @NotNull(message = "Max Limit can't be null")
     private Double maxLimit;
+
+    @NotNull(message = "A Cliente must be inserted")
+    private Long idPerson;
 }

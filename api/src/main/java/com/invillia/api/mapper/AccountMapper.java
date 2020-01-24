@@ -3,6 +3,7 @@ package com.invillia.api.mapper;
 import com.invillia.api.domain.Account;
 import com.invillia.api.domain.request.AccountRequest;
 import com.invillia.api.domain.response.AccountResponse;
+import com.invillia.api.service.PersonService;
 import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,14 @@ public class AccountMapper {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
+    private final PersonMapper personMapper;
+    private final PersonService personService;
+
+    public AccountMapper(PersonMapper personMapper, PersonService personService) {
+        this.personMapper = personMapper;
+        this.personService = personService;
+    }
+
     public AccountResponse accountToAccountResponse(final Account account){
         final AccountResponse accountResponse = new AccountResponse();
 
@@ -23,6 +32,7 @@ public class AccountMapper {
         accountResponse.setMaxLimit(account.getMaxLimit());
         accountResponse.setCreatedAt(account.getCreatedAt().format(formatter));
         accountResponse.setUpdatedAt(account.getUpdatedAt().format(formatter));
+        accountResponse.setIdPerson(personMapper.personToPersonResponse(account.getPerson()));
 
         return accountResponse;
     }

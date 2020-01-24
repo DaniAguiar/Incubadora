@@ -1,12 +1,11 @@
 package com.invillia.api.mapper;
 
 import com.invillia.api.domain.Person;
-import com.invillia.api.domain.request.AccountRequest;
 import com.invillia.api.domain.request.PersonRequest;
 import com.invillia.api.domain.response.PersonResponse;
+import com.invillia.api.repository.PersonRepository;
 import org.springframework.stereotype.Component;
 
-import javax.swing.text.DateFormatter;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,14 +13,22 @@ import java.util.stream.Collectors;
 @Component
 public class PersonMapper {
 
+    private final PersonRepository personRepository;
+
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+    public PersonMapper(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     public PersonResponse personToPersonResponse(final Person person){
         final PersonResponse personResponse = new PersonResponse();
 
         personResponse.setId(person.getId());
         personResponse.setName(person.getName());
-        personResponse.setName(person.getName());
+        personResponse.setCpf(person.getCpf());
+        personResponse.setCreatedAt(person.getCreatedAt().format(formatter));
+        personResponse.setUpdatedAt(person.getUpdatedAt().format(formatter));
 
         return personResponse;
     }

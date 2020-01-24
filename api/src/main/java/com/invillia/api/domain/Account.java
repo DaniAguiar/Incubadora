@@ -1,18 +1,20 @@
 package com.invillia.api.domain;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Account {
 
     @Id

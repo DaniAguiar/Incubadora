@@ -7,7 +7,6 @@ import com.invillia.api.exception.ResourceNotFoundException;
 import com.invillia.api.mapper.AccountMapper;
 import com.invillia.api.repository.AccountRepository;
 import com.invillia.api.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +20,6 @@ public class AccountService {
     private final AccountMapper accountMapper;
     private final PersonRepository personRepository;
 
-    @Autowired
     public AccountService(AccountRepository accountRepository,
                           AccountMapper accountMapper,
                           PersonRepository personRepository) {
@@ -47,6 +45,7 @@ public class AccountService {
     @Transactional
     public Long insert(final AccountRequest accountRequest){
         Account account = accountMapper.accountRequestToAccount(accountRequest);
+        account.setPerson(personRepository.findPersonById(accountRequest.getIdPerson()));
         accountRepository.save(account);
 
         return account.getId();

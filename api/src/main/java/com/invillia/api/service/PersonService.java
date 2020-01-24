@@ -6,8 +6,6 @@ import com.invillia.api.domain.response.PersonResponse;
 import com.invillia.api.exception.ResourceNotFoundException;
 import com.invillia.api.mapper.PersonMapper;
 import com.invillia.api.repository.PersonRepository;
-import com.sun.istack.FinalArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +16,6 @@ public class PersonService {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
 
-    @Autowired
     public PersonService(PersonRepository personRepository, PersonMapper personMapper) {
         this.personRepository = personRepository;
         this.personMapper = personMapper;
@@ -38,7 +35,7 @@ public class PersonService {
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public Long insert(final PersonRequest personRequest){
         Person person = personMapper.personRequestToPerson(personRequest);
         personRepository.save(person);

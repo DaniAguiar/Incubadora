@@ -1,6 +1,8 @@
 package com.invillia.api.domain;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,7 +12,6 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Person {
 
     @Id
@@ -25,9 +26,11 @@ public class Person {
     @Column(nullable = false, unique = true)
     private String cpf;
 
+    @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 

@@ -1,0 +1,3 @@
+ org.springframework.test.context.TestExecutionListener=\
+  com.invillia.api.testexecutionlistener.CleanDatabaseTestExecutionListener,\
+  com.invillia.api.testexecutionlistener.RestAssuredTestExecutionListener

@@ -4,21 +4,19 @@ import axios from "../../utils/httpClient"
 import Field from "../../components/Field";
 import { Link } from "react-router-dom";
 
-class EditAccount extends Component {
+class EditPerson extends Component {
     state = {
-        account: {
-            balance: "",
-            accountLimit: "",
-            maxLimit: ""
+        person: {
+            name: ""
         },
         errors: {}
     };
 
     componentDidMount() {
-        axios.get(`/accounts/${this.retrieveAccountId()}`)
+        axios.get(`/people/${this.retrievePersonId()}`)
             .then(({ data }) => {
                 this.setState({
-                    account: data
+                    person: data
                 })
             })
             .catch(({ response }) => {
@@ -28,16 +26,16 @@ class EditAccount extends Component {
             })
     }
 
-    retrieveAccountId = () =>
+    retrievePersonId = () =>
         this.props.match.params.id;
 
     handleChange = (event) => {
         let field = event.target.name;
         let value = event.target.value;
 
-        this.setState(({ account }) => ({
-            account: {
-                ...account,
+        this.setState(({ person }) => ({
+            person: {
+                ...person,
                 [field]: value
             }
         }))
@@ -46,8 +44,8 @@ class EditAccount extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.put(`/accounts/${this.retrieveAccountId()}`, this.state.account)
-            .then(() => this.props.history.push("/accounts"))
+        axios.put(`/people/${this.retrievePersonId()}`, this.state.person)
+            .then(() => this.props.history.push("/people"))
             .catch(({ response }) => {
                 if (response.status === 400) {
                     this.setState({
@@ -58,20 +56,20 @@ class EditAccount extends Component {
     };
 
     render() {
-        const { account, errors } = this.state;
+        const { person, errors } = this.state;
 
         return <div className="div-pages">
-            <h1 className="page-title">Alter Account</h1>
+            <h1 className="page-title">Alter Person</h1>
 
             <form onSubmit={this.handleSubmit}>
-                <Field name="maxLimit"
-                       label="Max Limit"
-                       value={account.maxLimit}
-                       errors={errors["maxLimit"]}
+                <Field name="name"
+                       label="Name"
+                       value={person.name}
+                       errors={errors["name"]}
                        onChange={this.handleChange}/>
 
                 <div className="button-center">
-                    <Link to="/accounts" className="btn btn-primary">Back</Link>&nbsp;
+                    <Link to="/people" className="btn btn-primary">Back</Link>&nbsp;
                     <button type="submit" className="btn btn-success">Save</button>
                 </div>
             </form>
@@ -79,4 +77,4 @@ class EditAccount extends Component {
     }
 }
 
-export default EditAccount;
+export default EditPerson;

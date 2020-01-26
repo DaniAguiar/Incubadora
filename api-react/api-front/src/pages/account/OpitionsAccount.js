@@ -44,6 +44,8 @@ class OpitionsAccount extends Component{
             "amount": this.state.account.valAct
         }
 
+        console.log(data);
+
         if(option === 'w') {
             await axios.post(`/accounts/withdraws/${this.retrieveAccountId()}`, data)
                     .then(() => this.props.history.push("/accounts"))

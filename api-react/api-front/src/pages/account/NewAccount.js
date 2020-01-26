@@ -9,7 +9,8 @@ class NewAccount extends Component{
         account: {
             balance: "",
             accountLimit: "",
-            maxLimit: ""
+            maxLimit: "",
+            idPerson: ""
         },
         errors: {},
         globalError: ""
@@ -72,6 +73,12 @@ class NewAccount extends Component{
                            label="Max Limit"
                            value={account.maxLimit}
                            errors={errors["maxLimit"]}
+                           onChange={this.handleChange}/>
+                    
+                    <Field name="idPerson"
+                           label="Id Person"
+                           value={account.idPerson}
+                           errors={errors["idPerson"]}
                            onChange={this.handleChange}/>
 
                     <div className="button-center">

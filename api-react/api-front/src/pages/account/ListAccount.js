@@ -37,6 +37,7 @@ class ListAccount extends Component{
                         <th>Balance</th>
                         <th>Account Limit</th>
                         <th>Max Limit</th>
+                        <th>Id Person</th>
                         <th>Date of Creation</th>
                         <th>Date of Update</th>
                         <th>Actions</th>
@@ -48,6 +49,7 @@ class ListAccount extends Component{
                         <td>{account.balance}</td>
                         <td>{account.accountLimit}</td>
                         <td>{account.maxLimit}</td>
+                        <td>{account.person.id}</td>
                         <td>{account.createdAt}</td>
                         <td>{account.updatedAt}</td>
                         <td>
